@@ -4,16 +4,15 @@
   </head>
   <body>
     <h1>Message App</h1>
+    <div id="messages"></div>
     <hr>
     <form id="message-form">
       <input name="message" placeholder="Message">
       <button>Send</button>
     </form>
-    
-    
-    <script>
+    <script id="message-block" type="text/html">
       <div>
-        <p>This is a message</p>  
+        <p>{{message}} - {{createdAt}}</p>  
       </div>
     </script>
 
