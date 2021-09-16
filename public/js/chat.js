@@ -10,7 +10,7 @@ const messageTemplate=document.querySelector('#message-block').innerHTML
 socket.on('message',(message)=>{
     const htmlStuff=Mustache.render(messageTemplate,{
         message:message.text,
-        createdAt:moment(message.createdAt).format('h:m') // Moment.js format date
+        createdAt:moment(message.createdAt).format('h:m A') // Moment.js format date
     })
     $messages.insertAdjacentHTML('beforeend',htmlStuff)
     console.log(message)
