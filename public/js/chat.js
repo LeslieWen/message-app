@@ -7,6 +7,9 @@ const $messageFormButton=$messageForm.querySelector('button')
 const $messages=document.querySelector('#messages')
 const messageTemplate=document.querySelector('#message-block').innerHTML
 
+//Query String selector
+const {username}=Qs.parse(location.search, {ignoreQueryPrefix:true})
+
 socket.on('message',(message)=>{
     const htmlStuff=Mustache.render(messageTemplate,{
         message:message.text,
@@ -31,3 +34,4 @@ $messageForm.addEventListener('submit', (e)=>{
     })
 })
 
+socket.emit('join',{username})
