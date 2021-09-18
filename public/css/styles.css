@@ -25,11 +25,23 @@ button {
     font-size: 10px;
     font-weight: bold;   
 }
-h1{
-    padding-top:24px;
-    padding-left:24px;
+
+/*Class Styling for login username page */
+.centered-form {
+    width: 100vw;
+    height: 80vh;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-/*Class Styling */
+.centered-form_box {
+    box-shadow: 0px 0px 2px 1px #68708b;
+    background: #F7F7FA;
+    padding: 24px;
+    width: 250px;
+}
+
+/*Class Styling for message page*/
 .chat{
     display:flex
 }
@@ -45,6 +57,10 @@ h1{
     flex-direction: column;
     max-height: 100vh;
 }
+.main_box_title{
+    padding-left: 24px;
+    padding-top:24px;
+}
 .chat_messages{
     overflow-y: scroll;
     flex-grow: 1;
@@ -58,7 +74,6 @@ h1{
     font-size: 14px;
     margin-right: 8px;
 }
-
 .message_metadata{
     color: rgb(153, 151, 151);
     font-size: 12px;
