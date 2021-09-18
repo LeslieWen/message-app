@@ -13,7 +13,7 @@ app.use(express.static(publicDirectoryPath))
 
 io.on('connection',(socket)=>{
     console.log("New websocket connection")
-    socket.emit('message',generateMessage('WELCOME!'))
+    socket.emit('message',generateMessage('Welcome to the React Message App'))
     socket.broadcast.emit('message',generateMessage('1 user has joined.'))
     socket.on('sendMessage',(message,callback)=>{ //receive sendMessage event from client
         const filter = new Filter()

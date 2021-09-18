@@ -7,23 +7,23 @@
   </head>
   <body>
     <div class="chat">
-
+      <div class="sidebar">
+      </div>
+      <div class ="main_box">
+        <h1>React Message App</h1>
+        <div id="messages" class="chat_messages"></div>
+          <form id="message-form">
+            <input name="message" placeholder="Message">
+            <button>Send</button>
+          </form>
+      </div>
     </div>
 
-
-
-    <h1>React Message App</h1>
-    <div id="messages"></div>
-    <br>
-    <hr>
-    <br>
-    <form id="message-form">
-      <input name="message" placeholder="Message">
-      <button>Send</button>
-    </form>
     <script id="message-block" type="text/html"><!--Message template-->
-      <div>
-        <p>{{message}} - {{createdAt}}</p>  
+      <div class="message">
+        <p><span class="user_name">Placeholder Username</span></p>
+        <p>{{message}}</p> 
+        <p><span class="message_metadata"> - {{createdAt}}</span></p> 
       </div>
     </script>
 
