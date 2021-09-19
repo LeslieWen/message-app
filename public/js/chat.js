@@ -21,8 +21,6 @@ const autoscroll=()=>{
     const visibleHeight=$messages.offsetHeight
     const contentHeight=$messages.scrollHeight
     const scrollOffset=$messages.scrollTop+visibleHeight // distance scrolled from top
-    console.log(contentHeight-newMessageHeight)
-    console.log(scrollOffset)
     if(contentHeight-newMessageHeight>=Math.floor(scrollOffset)){
         $messages.scrollTop=$messages.scrollHeight //push to bottom
     }
