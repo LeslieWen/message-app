@@ -27,7 +27,10 @@ io.on('connection',(socket)=>{
         
         socket.emit('message',generateMessage('System','Welcome to the React Message App'))
         socket.broadcast.to(user.room).emit('message',generateMessage('System',`${user.username} has joined the chat.`))
-        
+        io.to(user.room).emit('roomInfo',{
+            room:user.room,
+            users:getUsersInRoom(user.room)
+        })
         callback()
     })
 
@@ -47,8 +50,11 @@ io.on('connection',(socket)=>{
         const user=removeUser(socket.id)
         if(user){
             io.to(user.room).emit('message',generateMessage('System',`${user.username} has left`))
+            io.to(user.room).emit('roomInfo',{
+                room:user.room,
+                users:getUsersInRoom(user.room)
+            })
         }
-
     })
 })
 server.listen(port,()=>{

@@ -6,9 +6,14 @@ const $messageFormInput=$messageForm.querySelector('input')
 const $messageFormButton=$messageForm.querySelector('button')
 const $messages=document.querySelector('#messages')
 const messageTemplate=document.querySelector('#message-block').innerHTML
+const sidebarTemplate=document.querySelector('#sidebar-block').innerHTML
 
 //Query String selector
 const {username}=Qs.parse(location.search, {ignoreQueryPrefix:true})
+
+const autoscroll=()=>{
+    
+}
 
 socket.on('message',(message)=>{
     const htmlStuff=Mustache.render(messageTemplate,{
@@ -33,6 +38,12 @@ $messageForm.addEventListener('submit', (e)=>{
         }
         console.log('Message was sent.')
     })
+})
+socket.on('roomInfo',({room,users})=>{
+    const html=Mustache.render(sidebarTemplate,{
+        users
+    })
+    document.querySelector('#sidebar').innerHTML=html
 })
 
 socket.emit('join',{username},(error)=>{

@@ -49,7 +49,7 @@ button {
     height: 100vh;
     color: white;
     background: #6c78a0;
-    width: 150px;
+    width: 220px;
 }
 .main_box{
     flex-grow: 1;
