@@ -25,8 +25,8 @@ io.on('connection',(socket)=>{
         }
         socket.join(user.room)
         
-        socket.emit('message',generateMessage('Welcome to the React Message App'))
-        socket.broadcast.to(user.room).emit('message',generateMessage(`${user.username} has joined the chat.`))
+        socket.emit('message',generateMessage('System','Welcome to the React Message App'))
+        socket.broadcast.to(user.room).emit('message',generateMessage('System',`${user.username} has joined the chat.`))
         
         callback()
     })
@@ -39,18 +39,16 @@ io.on('connection',(socket)=>{
             return callback('No bad words allowed.')
         }
         
-        io.to(user.room).emit('message',generateMessage(message))
+        io.to(user.room).emit('message',generateMessage(user.username,message))
         callback() // acknowledge
     })
 
     socket.on('disconnect',()=>{
         const user=removeUser(socket.id)
         if(user){
-            io.to(user.room).emit('message',generateMessage(`${user.username} has left`))
+            io.to(user.room).emit('message',generateMessage('System',`${user.username} has left`))
         }
 
-
-        
     })
 })
 server.listen(port,()=>{

@@ -12,6 +12,7 @@ const {username}=Qs.parse(location.search, {ignoreQueryPrefix:true})
 
 socket.on('message',(message)=>{
     const htmlStuff=Mustache.render(messageTemplate,{
+        username:message.username,
         message:message.text,
         createdAt:moment(message.createdAt).format('h:mm A') // Moment.js format date
     })
