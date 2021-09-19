@@ -2,13 +2,14 @@ const users=[]
 
 const addUser=({id,username,room})=>{
     //Data Cleansing
-    username=username.trim().toLowerCase()
-    room=room.trim().toLowerCase()
     if(!username){
         return {
             error:'A username is required'
         }
     }
+    username=username.trim().toLowerCase()
+    room=room.trim().toLowerCase()
+
     const existingUsername=users.find((user)=>{
         return username.name===username
     })
