@@ -1,6 +1,6 @@
 const users=[]
 
-const addUser=({id, username,room})=>{
+const addUser=({id,username,room})=>{
     //Data Cleansing
     username=username.trim().toLowerCase()
     room=room.trim().toLowerCase()
@@ -10,9 +10,10 @@ const addUser=({id, username,room})=>{
         }
     }
     const existingUsername=users.find((user)=>{
-        return user.room===room && username.name===username
+        return username.name===username
     })
     if(existingUsername){
+        console.log("not unique")
         return{
             error:'Entered username is not unique.'
         }
@@ -28,4 +29,15 @@ const removeUser=(id)=>{
         return users.splice(index,1)[0]
     }
 }
-
+const getUser=(id)=>{
+    return users.find((user)=>user.id===id)
+}
+const getUsersInRoom=(room)=>{
+    return users.filter((user)=>user.room===room)
+}
+module.exports={
+    addUser,
+    removeUser,
+    getUser,
+    getUsersInRoom
+}

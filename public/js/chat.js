@@ -34,4 +34,9 @@ $messageForm.addEventListener('submit', (e)=>{
     })
 })
 
-socket.emit('join',{username})
+socket.emit('join',{username},(error)=>{
+    if(error){
+        alert(error)
+        location.href='/'
+    }
+})
