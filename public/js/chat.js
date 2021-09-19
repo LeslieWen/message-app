@@ -12,7 +12,20 @@ const sidebarTemplate=document.querySelector('#sidebar-block').innerHTML
 const {username}=Qs.parse(location.search, {ignoreQueryPrefix:true})
 
 const autoscroll=()=>{
-    
+    const $newMessage=$messages.lastElementChild
+    //Determine height of last message
+    const newMessageStyles=getComputedStyle($newMessage)//get margin spacing
+    const newMessageMargin=parseInt(newMessageStyles.marginBottom)
+    const newMessageHeight=$newMessage.offsetHeight+newMessageMargin
+
+    const visibleHeight=$messages.offsetHeight
+    const contentHeight=$messages.scrollHeight
+    const scrollOffset=$messages.scrollTop+visibleHeight // distance scrolled from top
+    console.log(contentHeight-newMessageHeight)
+    console.log(scrollOffset)
+    if(contentHeight-newMessageHeight>=Math.floor(scrollOffset)){
+        $messages.scrollTop=$messages.scrollHeight //push to bottom
+    }
 }
 
 socket.on('message',(message)=>{
@@ -22,7 +35,7 @@ socket.on('message',(message)=>{
         createdAt:moment(message.createdAt).format('h:mm A') // Moment.js format date
     })
     $messages.insertAdjacentHTML('beforeend',htmlStuff)
-    console.log(message)
+    autoscroll()
 })
 $messageForm.addEventListener('submit', (e)=>{
     e.preventDefault() 

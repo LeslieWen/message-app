@@ -78,3 +78,10 @@ button {
     color: rgb(153, 151, 151);
     font-size: 12px;
 }
+
+/*Sidebar*/
+.list-title {
+    font-weight: 400;
+    margin-bottom: 4px;
+    padding: 24px 24px 0 24px;
+}
